@@ -7,6 +7,7 @@ CREATE TABLE
         name_company VARCHAR(50) NOT NULL,
         phone VARCHAR(50) NOT NULL,
         euro VARCHAR(50) NOT NULL,
+        type_register VARCHAR(50) NOT NULL,
         PRIMARY KEY (id)
     )
 
@@ -19,5 +20,6 @@ CREATE TABLE
         email VARCHAR(50) NOT NULL,
         name_company VARCHAR(50) NOT NULL,
         phone VARCHAR(50) NOT NULL,
-        euro VARCHAR(50) NOT NULL
+        euro VARCHAR(50) NOT NULL,
+        type_register VARCHAR(50) NOT NULL
     );

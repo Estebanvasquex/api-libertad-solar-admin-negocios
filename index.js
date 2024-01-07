@@ -47,25 +47,24 @@ app.get('/wpdb/v1/get/bussines/', (req, res) => {
 
 // Crear registro de nuevos negocios
 app.post('/wpdb/v1/register/bussines/', (req, res) => {
-  const { name_person, email, name_company, phone, euro } = req.body;
-  pool.query(`INSERT INTO wp_bussines (name_person, email, name_company, phone, euro) VALUES ('${name_person}', '${email}', '${name_company}', '${phone}', '${euro}');`, (err, result) => {
+  const { name_person, email, name_company, phone, euro, type_register } = req.body;
+  pool.query(`INSERT INTO wp_bussines (name_person, email, name_company, phone, euro, type_register) VALUES ('${name_person}', '${email}', '${name_company}', '${phone}', '${euro}', '${type_register}');`, (err, result) => {
     if (err) {
       return res.status(500).json({ message: "Error en el insertado", error: err });
     }
     return res.json({ message: "Negocio registrado correctamente" });
   });
-})
+});
 
 app.delete('/wpdb/v1/delete/bussines/:id', (req, res) => {
   const { id } = req.params;
-  const sql = 'DELETE FROM wp_bussines WHERE id = ?';
-  pool.query(sql, [id], (err, result) => {
+  pool.query(`DELETE FROM wp_bussines WHERE id = ${id}`, (err, result) => {
     if (err) {
       return res.status(500).json({ message: "Error en el borrado", error: err });
     }
     return res.json({ message: "Negocio eliminado correctamente" });
   });
-
 })
+
 
 
